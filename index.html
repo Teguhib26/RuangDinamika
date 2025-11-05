@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Production Services</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar Styles - Modern and Futuristic */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid #ff6600;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.5);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        nav h1 {
+            color: #ff6600;
+            font-size: 2rem;
+            text-shadow: 0 0 10px #ff6600;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff6600;
+            text-shadow: 0 0 10px #ff6600;
+        }
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url(af18caa1-a589-46ea-aa59-63f80b3c70ff.jpg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1200x800/000000/ffffff?text=Music+Production') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        #hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        #hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background: #ff6600;
+            color: #fff;
+            padding: 15px 50px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            background: #e55a00;
+            box-shadow: 0 0 20px #ff6600;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 100px 0;
+            background: #111;
+        }
+        #services h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff6600;
+            font-size: 2.5rem;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #ff6600;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 102, 0, 0.5);
+        }
+        .service-card h3 {
+            margin-bottom: 20px;
+            color: #ff6600;
+        }
+
+        /* Pricelist Section */
+        #pricelist {
+            padding: 100px 0;
+            background: #000;
+        }
+        #pricelist h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff6600;
+            font-size: 2.5rem;
+        }
+        .price-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .price-card {
+            background: #222;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #ff6600;
+            transition: transform 0.3s;
+        }
+        .price-card:hover {
+            transform: scale(1.05);
+        }
+        .price-card h3 {
+            color: #ff6600;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 100px 0;
+            background: #111;
+        }
+        #portfolio h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ff6600;
+            font-size: 2.5rem;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .portfolio-item {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #ff6600;
+        }
+        .portfolio-item audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background: #000;
+            text-align: center;
+        }
+        #contact h2 {
+            margin-bottom: 50px;
+            color: #ff6600;
+            font-size: 2.5rem;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ff6600;
+            border-radius: 5px;
+            background: #222;
+            color: #fff;
+        }
+        form button {
+            background: #ff6600;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background: #e55a00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                margin-top: 20px;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul.active {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            #hero h2 {
+                font-size: 2rem;
+            }
+            .service-grid, .price-table, .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <h1>Ruang Dinamika</h1>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricelist">Pricelist</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <h2>Selamat Datang Di <br> Ruang Dinamika</h2>
+            <p>Mixing, mastering, dan olah MIDI profesional biar lagu lo makin keren dan siap rilis! 🎛️🔥</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Mixing</h3>
+                    <p>Biar lagu lo makin bening dan balance, cobain teknik mixing pro biar hasilnya naik level! 🎧🔥</p>
+                </div>
+                <div class="service-card">
+                    <h3>Mastering</h3>
+                    <p>Halusin hasil akhir lo pake mastering biar tetep nendang di semua platform! 🚀🎶</p>
+                </div>
+                <div class="service-card">
+                    <h3>MIDI Processing</h3>
+                    <p>Bikin data MIDI lo makin rapi dan responsif biar hasil produksinya lebih mantap dan nyatu! 🎹⚡</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricelist Section -->
+    <section id="pricelist">
+        <div class="container">
+            <h2>Pricelist</h2>
+            <div class="price-table">
+                <div class="price-card">
+                    <h3>Mixing</h3>
+                    <div class="price">Rp.400.000</div>
+                    <p>untuk 2 lagu, maksimal 13 track per lagu</p>
+                </div>
+                <div class="price-card">
+                    <h3>Mastering</h3>
+                    <div class="price">Rp.200.000</div>
+                    <p>untuk 2 lagu</p>
+                </div>
+                <div class="price-card">
+                    <h3>MIDI Processing</h3>
+                    <div class="price">Rp.150.000</div>
+                    <p>untuk 3 track midi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <h2>Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Enough For Me - Retrouvailles</h3>
+                    <audio controls>
+                        <source src="Neo Wit.mp3" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Ini Terlalu Indah Untuk Abadi - The Dramma</h3>
+                    <audio controls>
+                        <source src="SpotiDown.App - Ini Terlalu Indah Untuk Abadi - The Dramma.mp3" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Song For You - No Gigs Still Party</h3>
+                    <audio controls>
+                        <source src="SpotiDown.App - Song For You - No Gigs Still Party.mp3" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for interactivity
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navUl = document.querySelector('nav ul');
+        menuToggle.addEventListener('click', () => {
+            navUl.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navbar links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                // Close menu on link click for mobile
+                navUl.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Form submission (basic alert for demo)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+        });
+
+        // Add some animation on scroll (simple fade-in)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.service-card, .price-card, .portfolio-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
